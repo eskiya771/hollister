@@ -4,15 +4,23 @@ Uses ordinary browser controls; does not solve or evade security challenges.
 """
 import re
 from pathlib import Path
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeoutError
 
 
 def dismiss_cookies(page):
-    for name in ('Reject All', 'Alle ablehnen', 'Alles ablehnen', 'Ablehnen'):
-        button = page.get_by_role('button', name=name, exact=True)
-        if button.count() == 1 and button.is_visible():
-            button.click()
-            return
+    # OneTrust loads asynchronously; its IDs are independent of shop language.
+    banner = page.locator('#onetrust-banner-sdk')
+    reject = page.locator('#onetrust-reject-all-handler')
+    try:
+        banner.wait_for(state='visible', timeout=10000)
+    except PlaywrightTimeoutError:
+        return  # No banner: consent may already be saved in the profile.
+    try:
+        reject.wait_for(state='visible', timeout=5000)
+        reject.click(timeout=10000)
+        banner.wait_for(state='hidden', timeout=10000)
+    except PlaywrightTimeoutError as exc:
+        raise RuntimeError('Cookie-Dialog konnte nicht geschlossen werden') from exc
 
 
 def check_browser(cfg):
@@ -27,8 +35,8 @@ def check_browser(cfg):
         page.set_default_timeout(15000)
         try:
             page.goto(cfg['PRODUCT_URL'], wait_until='domcontentloaded', timeout=60000)
-            page.get_by_role('heading', level=1).wait_for(timeout=20000)
             dismiss_cookies(page)
+            page.get_by_role('heading', level=1).wait_for(timeout=20000)
             if '/shop/us/' in page.url:
                 page.get_by_role('button', name='US', exact=True).click()
                 page.get_by_role('combobox', name='Ship to', exact=True).select_option(label='Germany')
@@ -37,6 +45,7 @@ def check_browser(cfg):
                 dismiss_cookies(page)
             if '/shop/eu-de/' not in page.url:
                 return 'unknown', 'Der Browser konnte den deutschen Shop nicht bestätigen.'
+            dismiss_cookies(page)
             main = page.get_by_role('main')
             main.get_by_role('radio', name=re.compile('^' + re.escape(cfg['PRODUCT_COLOR']) + '$', re.I)).check()
             main.get_by_role('heading', name=re.compile('^Farbe:.*' + re.escape(cfg['PRODUCT_COLOR']), re.I)).wait_for()
@@ -61,6 +70,8 @@ def check_browser(cfg):
                     return 'unknown', 'Hollister blockiert diesen automatisierten Browser mit einer Schutzseite.'
             except Exception:
                 pass
+            if isinstance(exc, RuntimeError) and str(exc) == 'Cookie-Dialog konnte nicht geschlossen werden':
+                return 'unknown', str(exc) + '.'
             return 'unknown', 'Browserabfrage fehlgeschlagen (' + type(exc).__name__ + ').'
         finally:
             context.close()
