@@ -1,0 +1,7 @@
+.env
+*.env
+*.log
+*.pid
+__pycache__
+.git
+test_app.py
