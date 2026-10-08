@@ -18,5 +18,30 @@ services:
       options:
         max-size: 5m
         max-file: '2'
+  manual-browser:
+    profiles: [manual]
+    build:
+      context: .
+      target: manual
+    env_file: .env
+    init: true
+    restart: 'no'
+    stop_grace_period: 30s
+    ports:
+      - '127.0.0.1:6080:6080'
+    volumes:
+      - browser-data:/data
+    tmpfs:
+      - /tmp:size=512m
+    shm_size: 256m
+    read_only: true
+    cap_drop: [ALL]
+    security_opt:
+      - no-new-privileges:true
+    logging:
+      driver: json-file
+      options:
+        max-size: 5m
+        max-file: '2'
 volumes:
   browser-data:

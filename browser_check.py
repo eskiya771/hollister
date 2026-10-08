@@ -4,6 +4,7 @@ Uses ordinary browser controls; does not solve or evade security challenges.
 """
 import re
 from pathlib import Path
+from profile_lock import profile_lock
 from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeoutError
 
 
@@ -24,6 +25,16 @@ def dismiss_cookies(page):
 
 
 def check_browser(cfg):
+    try:
+        with profile_lock(cfg.get('BROWSER_PROFILE_DIR', 'browser-profile')):
+            return _check_browser(cfg)
+    except RuntimeError as exc:
+        if str(exc) == 'Browserprofil wird bereits verwendet':
+            return 'unknown', 'Browserprofil wird im manuellen Modus oder von einem anderen Monitor verwendet.'
+        raise
+
+
+def _check_browser(cfg):
     profile = Path(cfg.get('BROWSER_PROFILE_DIR', 'browser-profile'))
     profile.mkdir(parents=True, exist_ok=True)
     with sync_playwright() as p:

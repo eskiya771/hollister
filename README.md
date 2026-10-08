@@ -1,5 +1,58 @@
 # Hollister availability monitor
 
+## Manual CAPTCHA session on Synology
+
+The optional `manual-browser` service displays Chromium through noVNC using the
+same Docker volume and profile as the monitor. It does not solve challenges.
+An exclusive file lock prevents both services from opening the profile at once.
+This mode is implemented but still requires a Docker build and live test on your NAS.
+
+Keep the existing project directory and Compose project name: a new project name
+would create a different `browser-data` volume. Do not run `down -v`.
+
+In the NAS project folder, stop the monitor before starting the manual service:
+
+```sh
+docker compose stop hollister
+docker compose --profile manual up -d --build manual-browser
+docker compose --profile manual logs --tail=50 manual-browser
+```
+
+On your PC, open a separate terminal and keep this SSH tunnel running. Replace
+`NAS_USER` and `NAS_IP` with your DSM SSH user and NAS address:
+
+```sh
+ssh -N -L 127.0.0.1:6080:127.0.0.1:6080 NAS_USER@NAS_IP
+```
+
+Open `http://127.0.0.1:6080/vnc.html` on the PC and click Connect.
+The browser shown there runs **on the NAS**, not on your PC. Solve any challenge
+manually, dismiss cookies and confirm the German shop, Helles Pink and XS.
+noVNC has no VNC password in this configuration; its published port binds only
+to NAS loopback and SSH provides authentication and encryption. Do not change
+the binding to `0.0.0.0`, expose it through a reverse proxy or forward it on your router.
+Other local NAS processes can reach the loopback port while the service runs.
+
+Save the browser profile with a graceful stop, then test one automatic check:
+
+```sh
+docker compose --profile manual stop manual-browser
+docker compose build hollister
+docker compose run --rm --no-deps hollister python app.py --once
+```
+
+Review the actual Telegram result. If it is correct, start the 15-minute monitor:
+
+```sh
+docker compose up -d hollister
+docker compose logs --tail=50 hollister
+```
+
+Close the SSH tunnel with Ctrl+C. A successful manual challenge does not guarantee
+future automatic requests work: session-only cookies, browser restarts or the
+change from a visible to a headless browser may trigger a new challenge.
+An unknown result must remain unknown; do not treat it as sold out.
+
 Monitors the configured product size and color and sends a Telegram status **on every check**, default every 15 minutes. Configured target: Icon Henley, XS, Helles Pink, requested SKU 673063170.
 
 ## Browser check and current test status
