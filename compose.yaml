@@ -4,6 +4,11 @@ services:
     restart: unless-stopped
     env_file: .env
     init: true
+    volumes:
+      - browser-data:/data
+    tmpfs:
+      - /tmp:size=512m
+    shm_size: 256m
     read_only: true
     cap_drop: [ALL]
     security_opt:
@@ -13,3 +18,5 @@ services:
       options:
         max-size: 5m
         max-file: '2'
+volumes:
+  browser-data:

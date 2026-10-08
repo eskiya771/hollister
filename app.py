@@ -65,6 +65,12 @@ def stock_from_html(html, size, color):
 
 
 def check(cfg):
+    if cfg.get('CHECK_MODE', 'browser') == 'browser':
+        try:
+            from browser_check import check_browser
+            return check_browser(cfg)
+        except Exception as exc:
+            return 'unknown', 'Browser nicht einsatzbereit (' + type(exc).__name__ + ').'
     try:
         req = urllib.request.Request(cfg['PRODUCT_URL'], headers={'User-Agent': 'HollisterAvailabilityMonitor/0.1', 'Accept-Language': 'de-DE,de;q=0.9'})
         with urllib.request.urlopen(req, timeout=30) as response:

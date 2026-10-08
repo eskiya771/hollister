@@ -5,3 +5,5 @@
 __pycache__
 .git
 test_app.py
+vendor
+browser-profile

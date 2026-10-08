@@ -2,9 +2,11 @@
 
 Monitors the configured product size and color and sends a Telegram status **on every check**, default every 15 minutes. Configured target: Icon Henley, XS, Helles Pink, requested SKU 673063170.
 
-## Current limitation
+## Browser check and current test status
 
-The live Hollister request from the sandbox returned a JavaScript protection page. The checker therefore reports **Status nicht prüfbar**. Successful Telegram delivery does not establish product availability. The parser supports exact size/color variants in JSON-LD Product data; the current live shop structure and correspondence to the requested SKU have not been verified. A shop-specific adapter may be needed. Generic product-level stock and HTML words such as “available” never trigger an availability alert.
+The default checker now uses Playwright Chromium, dismisses the cookie banner with Reject All (and German equivalents), switches US redirects to Germany, then selects the configured exact color and size. It reports the visible sold-out message or active add-to-bag button only after confirming the German shop and variant selections. It never solves security challenges. CHECK_MODE=http retains the previous conservative JSON-LD checker.
+
+A separate interactive cloud-browser test confirmed the German shop shows **Helles Pink, XS: ausverkauft**. The application browser could not start inside this Python sandbox: Chrome exits immediately with SIGSEGV / TargetClosedError, before opening Hollister. The browser adapter has therefore **not passed an end-to-end application test**, and no corrected periodic monitor is currently running here. Telegram delivery was previously tested successfully. Synology browser execution also remains to be verified.
 
 ## Synology Container Manager
 
@@ -17,9 +19,11 @@ The `.env.example` is a template without credentials. Send frequency is configur
 
 ## Local run
 
-Requires Python 3.12 or newer; no additional Python packages.
+Requires Python 3.12 or newer plus Playwright and its Chromium runtime.
 
 ```sh
+pip install -r requirements.txt
+python3 -m playwright install --with-deps chromium
 python3 -m unittest -v
 python3 app.py --once
 python3 app.py
@@ -29,4 +33,6 @@ The app loads `.env` from the working directory, with existing environment varia
 
 ## Sandbox trial
 
-Started as a background Python process because Docker is unavailable in this sandbox. It runs only while this environment and process remain active; it is not a permanent hosted service. The Synology is the intended persistent host.
+The initial HTTP monitor sent one confirmed Telegram status but its terminal session ended later. Detached shell processes also do not survive the execution boundary here. Do not treat this sandbox as an ongoing monitor. The corrected browser application currently cannot launch its browser in this environment. The Synology is the intended persistent host.
+
+BROWSER_PROFILE_DIR configures a persistent profile; compose.yaml uses a writable Docker volume for it. BROWSER_EXECUTABLE_PATH can optionally select an existing official Chrome installation. The Docker image installs Chromium with its operating system dependencies and keeps credentials outside the image.
