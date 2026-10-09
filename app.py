@@ -90,7 +90,7 @@ def validate_config(cfg):
     if cfg.get('CHECK_MODE', 'browser') != 'browser':
         raise ValueError('CHECK_MODE muss browser sein.')
     try:
-        interval = int(cfg.get('CHECK_INTERVAL_SECONDS', '60'))
+        interval = int(cfg.get('CHECK_INTERVAL_SECONDS', '900'))
         ZoneInfo(cfg.get('TZ', 'Europe/Berlin'))
     except Exception:
         raise ValueError('Intervall oder Zeitzone ungültig.') from None

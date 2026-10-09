@@ -6,7 +6,7 @@ services:
     environment:
       BROWSER_PROFILE_DIR: /data/browser-profile
       CHECK_MODE: browser
-      CHECK_INTERVAL_SECONDS: '60'
+      CHECK_INTERVAL_SECONDS: '900'
     init: true
     stop_grace_period: 90s
     volumes:
@@ -58,7 +58,7 @@ services:
     environment:
       BROWSER_PROFILE_DIR: /data/browser-profile
       SESSION_MONITOR: '1'
-      CHECK_INTERVAL_SECONDS: '60'
+      CHECK_INTERVAL_SECONDS: '900'
       PRODUCT_SIZES: 'XS,S'
       VERIFY_S_ONCE: '${VERIFY_S_ONCE:-0}'
 volumes:

@@ -1,4 +1,13 @@
-> Aktueller Betrieb (09.10.2026, 01:19 Uhr): Im Projekt `hollister` laeuft jetzt `session-monitor` mit dauerhaft offenem Browser und 60-Sekunden-Takt. Zwei echte Ausverkauft-Meldungen fuer Helles Pink / XS und Telegram-Zustellungen (71, 72) sind bestaetigt. Siehe docs/VERIFICATION.md. Die folgenden Anleitungen zum reinen manuellen Modus beschreiben den vorherigen Betriebszustand. Den laufenden Session-Monitor nicht durch einen separaten Monitor oder resume-Befehl ersetzen.
+# HTTP-Monitor für beide Oberteile
+
+Die freigegebene Umstellung verwendet `http_monitor.py`: Henley Helles Pink (XS/S) und Camisole Weiß (XS/S/XXL), zwei HTTP-Anfragen und eine Telegram-Zusammenfassung jede Minute. Kein Browser und kein Sitzungsprofil erforderlich. Einrichtung, Fehlerverhalten und Rückwechsel: [docs/HTTP_MONITOR.md](docs/HTTP_MONITOR.md).
+
+Der NAS-Wechsel wurde am 09.10.2026 um 13:51 Uhr bestätigt: HTTP-Monitor mit 60-Sekunden-Takt, fünf Varianten und Telegram-Nachricht 212. Nachweis: `/volume1/docker/hollister/http-release/deployment.log` und `first-cycle.log`. Die folgenden Browser-Anleitungen dokumentieren den bisherigen Betrieb.
+
+---
+> Konfiguration am 09.10.2026 wieder auf **15 Minuten (900 Sekunden)** gestellt. Fuer den laufenden NAS-Container wird die Einstellung erst nach Uebernahme der Konfiguration und Neustart wirksam.
+
+> Betriebsnachweis (09.10.2026, 01:19 Uhr): Im Projekt `hollister` laeuft jetzt `session-monitor` mit dauerhaft offenem Browser und 60-Sekunden-Takt. Zwei echte Ausverkauft-Meldungen fuer Helles Pink / XS und Telegram-Zustellungen (71, 72) sind bestaetigt. Siehe docs/VERIFICATION.md. Die folgenden Anleitungen zum reinen manuellen Modus beschreiben den vorherigen Betriebszustand. Den laufenden Session-Monitor nicht durch einen separaten Monitor oder resume-Befehl ersetzen.
 
 # Aktueller manueller Betrieb
 
@@ -62,7 +71,7 @@ An unknown result must remain unknown; do not treat it as sold out.
 
 # Erhaltene lokale Dokumentation (bisheriger Monitorbetrieb)
 
-> Aktuelle Einstellung: Seit der Umstellung am 08.10.2026 betr?gt das Pr?f- und Meldeintervall **60 Sekunden**. Die unten dokumentierten 15-Minuten-Tests sind historische Nachweise vor dieser ?nderung. Auf der NAS seit 23:52:53 Uhr aktiv; zwei automatische Abfragen und Telegram-Nachrichten 17 und 18 sind best?tigt.
+> Historische Einstellung: Seit der Umstellung am 08.10.2026 betr?gt das Pr?f- und Meldeintervall **60 Sekunden**. Die unten dokumentierten 15-Minuten-Tests sind historische Nachweise vor dieser ?nderung. Auf der NAS seit 23:52:53 Uhr aktiv; zwei automatische Abfragen und Telegram-Nachrichten 17 und 18 sind best?tigt.
 
 # Hollister auf Synology
 

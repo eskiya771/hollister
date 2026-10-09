@@ -1,0 +1,34 @@
+{
+  "at_utc": "2026-10-09T11:20:30.613343+00:00",
+  "products": [
+    {
+      "at_utc": "2026-10-09T11:20:30.851221+00:00",
+      "page_product_id": "63757420",
+      "color": "Helles Pink",
+      "color_product_id": "63766393",
+      "collection_id": "711658",
+      "transport": "Python urllib on NAS; no browser, cookies or authentication",
+      "response": {
+        "status": 200,
+        "final_url": "https://www.hollisterco.com/api/bff/product?storeId=19158&catalogId=11558&langId=-3&brand=hol&store=h-eu-de&country=DE&urlRoot=%2Fshop%2Feu-de&currency=EUR",
+        "bytes": 12366,
+        "truncated": false,
+        "cache_control": "max-age=0, no-store"
+      },
+      "sizes": {
+        "XS": {
+          "status": "ausverkauft",
+          "shortSku": "673107742",
+          "inventory": 0,
+          "inventoryStatus": "Unavailable"
+        },
+        "S": {
+          "status": "ausverkauft",
+          "shortSku": "673107911",
+          "inventory": 0,
+          "inventoryStatus": "Unavailable"
+        }
+      }
+    }
+  ]
+}

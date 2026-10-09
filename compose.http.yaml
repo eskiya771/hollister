@@ -1,0 +1,21 @@
+services:
+  http-monitor:
+    build:
+      context: .
+      dockerfile: Dockerfile.http
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      CHECK_INTERVAL_SECONDS: ${CHECK_INTERVAL_SECONDS:-60}
+      HTTP_MAX_CACHE_AGE_SECONDS: ${HTTP_MAX_CACHE_AGE_SECONDS:-900}
+      TZ: Europe/Berlin
+    read_only: true
+    tmpfs:
+      - /tmp:size=16m
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    logging:
+      driver: json-file
+      options:
+        max-size: 5m
+        max-file: "2"

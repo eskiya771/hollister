@@ -67,7 +67,7 @@ class AppTests(unittest.TestCase):
     def test_validate(self):
         cfg = dict(CFG)
         del cfg['PRODUCT_SKU']
-        self.assertEqual(validate_config(cfg), 60)
+        self.assertEqual(validate_config(cfg), 900)
         self.assertEqual(cfg['PRODUCT_SKU'], '673107873')
         for change in ({'PRODUCT_SIZE': 'S'}, {'CHECK_INTERVAL_SECONDS': '59'}, {'CHECK_MODE': 'http'}, {'PRODUCT_URL': CFG['PRODUCT_URL'].replace('eu-de', 'us')}, {'TZ': 'Bad/Zone'}):
             with self.assertRaises(ValueError):
@@ -104,10 +104,10 @@ class AppTests(unittest.TestCase):
             self.assertEqual(run_once(CFG), 'delivery_failed')
         self.assertNotIn('SECRET_TOKEN', '\n'.join(logs.output))
 
-    def test_immediate_then_one_minute_schedule(self):
+    def test_immediate_then_fifteen_minute_schedule(self):
         STOP.clear()
         def stop_after_wait(seconds):
-            self.assertEqual(seconds, 55)
+            self.assertEqual(seconds, 895)
             STOP.set()
         try:
             with patch.dict('os.environ', CFG, clear=True), patch('app.load_env'), patch('sys.argv', ['app.py']), patch('app.signal.signal'), patch('app.run_once', return_value='unavailable') as run, patch('app.time.monotonic', side_effect=[100, 105]), patch.object(STOP, 'wait', side_effect=stop_after_wait):

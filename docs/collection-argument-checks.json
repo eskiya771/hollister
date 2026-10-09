@@ -1,0 +1,94 @@
+[
+  {
+    "name": "all_arguments",
+    "arguments": "collectionId: \"711658\", faceout: \"\", productId: \"63766393\"",
+    "response": {
+      "status": 200,
+      "final_url": "https://www.hollisterco.com/api/bff/product?storeId=19158&catalogId=11558&langId=-3&brand=hol&store=h-eu-de&country=DE&urlRoot=%2Fshop%2Feu-de&currency=EUR",
+      "bytes": 12366,
+      "truncated": false
+    },
+    "sizes": {
+      "XS": {
+        "status": "ausverkauft",
+        "shortSku": "673107742",
+        "inventory": 0,
+        "inventoryStatus": "Unavailable",
+        "matches_browser_snapshot": false
+      },
+      "S": {
+        "status": "ausverkauft",
+        "shortSku": "673107911",
+        "inventory": 0,
+        "inventoryStatus": "Unavailable",
+        "matches_browser_snapshot": false
+      }
+    }
+  },
+  {
+    "name": "without_product_id",
+    "arguments": "collectionId: \"711658\", faceout: \"\"",
+    "response": {
+      "status": 400,
+      "final_url": "https://www.hollisterco.com/api/bff/product?storeId=19158&catalogId=11558&langId=-3&brand=hol&store=h-eu-de&country=DE&urlRoot=%2Fshop%2Feu-de&currency=EUR",
+      "bytes": 216,
+      "truncated": false,
+      "graphql_error_types": [
+        "graphql_error"
+      ],
+      "graphql_error_arguments": [
+        "productId"
+      ],
+      "error_type": "HTTPError"
+    },
+    "sizes": {
+      "XS": {
+        "status": "nicht prüfbar",
+        "shortSku": null,
+        "inventory": null,
+        "inventoryStatus": null,
+        "matches_browser_snapshot": false
+      },
+      "S": {
+        "status": "nicht prüfbar",
+        "shortSku": null,
+        "inventory": null,
+        "inventoryStatus": null,
+        "matches_browser_snapshot": false
+      }
+    }
+  },
+  {
+    "name": "collection_id_only",
+    "arguments": "collectionId: \"711658\"",
+    "response": {
+      "status": 400,
+      "final_url": "https://www.hollisterco.com/api/bff/product?storeId=19158&catalogId=11558&langId=-3&brand=hol&store=h-eu-de&country=DE&urlRoot=%2Fshop%2Feu-de&currency=EUR",
+      "bytes": 216,
+      "truncated": false,
+      "graphql_error_types": [
+        "graphql_error"
+      ],
+      "graphql_error_arguments": [
+        "productId"
+      ],
+      "error_type": "HTTPError"
+    },
+    "sizes": {
+      "XS": {
+        "status": "nicht prüfbar",
+        "shortSku": null,
+        "inventory": null,
+        "inventoryStatus": null,
+        "matches_browser_snapshot": false
+      },
+      "S": {
+        "status": "nicht prüfbar",
+        "shortSku": null,
+        "inventory": null,
+        "inventoryStatus": null,
+        "matches_browser_snapshot": false
+      }
+    }
+  }
+]

@@ -1,0 +1,63 @@
+{
+  "operation": "GetOutfits",
+  "public_kic": "KIC_339-6340-00307-101",
+  "response": {
+    "status": 200,
+    "final_url": "https://www.hollisterco.com/api/bff/product?storeId=19158&catalogId=11558&langId=-3&brand=hol&store=h-eu-de&country=DE&urlRoot=%2Fshop%2Feu-de&currency=EUR",
+    "bytes": 1760,
+    "truncated": false
+  },
+  "matching_product_records": [
+    {
+      "path": "$.data.outfits[0].products[0]",
+      "fields": {
+        "productId": "63617331",
+        "collectionId": "706282",
+        "kicId": "KIC_339-6340-00307-101"
+      }
+    },
+    {
+      "path": "$.data.outfits[1].products[0]",
+      "fields": {
+        "productId": "63617331",
+        "collectionId": "706282",
+        "kicId": "KIC_339-6340-00307-101"
+      }
+    },
+    {
+      "path": "$.data.outfits[2].products[0]",
+      "fields": {
+        "productId": "63617331",
+        "collectionId": "706282",
+        "kicId": "KIC_339-6340-00307-101"
+      }
+    },
+    {
+      "path": "$.data.outfits[3].products[0]",
+      "fields": {
+        "productId": "63617331",
+        "collectionId": "706282",
+        "kicId": "KIC_339-6340-00307-101"
+      }
+    },
+    {
+      "path": "$.data.outfits[4].products[0]",
+      "fields": {
+        "productId": "63617331",
+        "collectionId": "706282",
+        "kicId": "KIC_339-6340-00307-101"
+      }
+    },
+    {
+      "path": "$.data.outfits[5].products[0]",
+      "fields": {
+        "productId": "63617331",
+        "collectionId": "706282",
+        "kicId": "KIC_339-6340-00307-101"
+      }
+    }
+  ],
+  "collection_ids": [
+    "706282"
+  ]
+}

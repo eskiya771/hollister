@@ -9,3 +9,8 @@ browser-profile/
 artifacts/
 *.log
 .update-backups/
+.deployment-release-notes.md
+# Large browser diagnostic captures stay local; reports and API examples are versioned.
+docs/availability-both.json
+docs/availability-diagnostic.json
+docs/availability-session-http.json

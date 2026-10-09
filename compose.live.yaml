@@ -9,7 +9,7 @@ services:
     env_file: .env
     environment:
       LIVE_MONITOR: '1'
-      CHECK_INTERVAL_SECONDS: '60'
+      CHECK_INTERVAL_SECONDS: '900'
       BROWSER_PROFILE_DIR: /data/browser-profile
     ports:
       - '127.0.0.1:6080:6080'

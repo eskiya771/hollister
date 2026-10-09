@@ -1,0 +1,77 @@
+{
+  "started_at_utc": "2026-10-09T10:53:56.412255+00:00",
+  "summaries": [
+    {
+      "page_product_id": "63757420",
+      "color": "Helles Pink",
+      "color_product_id": "63766393",
+      "captured_at_utc": "2026-10-09T10:53:56.766883+00:00",
+      "sizes": {
+        "XS": {
+          "status": "ausverkauft",
+          "shortSku": "673107742",
+          "inventory": 0,
+          "inventoryStatus": "Unavailable",
+          "ui_status": "ausverkauft",
+          "source": "initial HTML: CACHE.ROOT_QUERY.*.collection.skus"
+        },
+        "S": {
+          "status": "ausverkauft",
+          "shortSku": "673107911",
+          "inventory": 0,
+          "inventoryStatus": "Unavailable",
+          "ui_status": "ausverkauft",
+          "source": "initial HTML: CACHE.ROOT_QUERY.*.collection.skus"
+        }
+      },
+      "request_count": 35,
+      "response_count": 35,
+      "size_change_requests": [],
+      "http_tests": [],
+      "capture_errors": []
+    },
+    {
+      "page_product_id": "63270319",
+      "color": "Weiß",
+      "color_product_id": null,
+      "captured_at_utc": "2026-10-09T10:54:51.573974+00:00",
+      "sizes": {
+        "XS": {
+          "status": "nicht prüfbar",
+          "shortSku": null,
+          "inventory": null,
+          "inventoryStatus": null,
+          "ui_status": "nicht prüfbar",
+          "source": "initial HTML: CACHE.ROOT_QUERY.*.collection.skus"
+        },
+        "S": {
+          "status": "nicht prüfbar",
+          "shortSku": null,
+          "inventory": null,
+          "inventoryStatus": null,
+          "ui_status": "nicht prüfbar",
+          "source": "initial HTML: CACHE.ROOT_QUERY.*.collection.skus"
+        },
+        "XXL": {
+          "status": "nicht prüfbar",
+          "shortSku": null,
+          "inventory": null,
+          "inventoryStatus": null,
+          "ui_status": "nicht prüfbar",
+          "source": "initial HTML: CACHE.ROOT_QUERY.*.collection.skus"
+        }
+      },
+      "request_count": 6,
+      "response_count": 6,
+      "size_change_requests": [],
+      "http_tests": [],
+      "capture_errors": [
+        {
+          "stage": "initial_load",
+          "reason": "challenge"
+        }
+      ]
+    }
+  ],
+  "finished_at_utc": "2026-10-09T10:54:57.844697+00:00"
+}

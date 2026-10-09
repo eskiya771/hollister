@@ -1,0 +1,1017 @@
+{
+  "at_utc": "2026-10-09T11:11:25.218448+00:00",
+  "method": "POST",
+  "url": "https://www.hollisterco.com/api/bff/product?storeId=19158&catalogId=11558&langId=-3&brand=hol&store=h-eu-de&country=DE&urlRoot=%2Fshop%2Feu-de&currency=EUR",
+  "query": "query DiagnosticCollection {\n  collection(collectionId: \"711658\", faceout: \"\", productId: \"63757975\") {\n    collection {\n      skus { productId shortSku sizePrimary sizeSecondary inventory inventoryStatus }\n    }\n  }\n}",
+  "credentials": "none",
+  "query_source": "reconstructed from observed cache, not captured original query",
+  "response": {
+    "status": 200,
+    "final_url": "https://www.hollisterco.com/api/bff/product?storeId=19158&catalogId=11558&langId=-3&brand=hol&store=h-eu-de&country=DE&urlRoot=%2Fshop%2Feu-de&currency=EUR",
+    "bytes": 12366,
+    "truncated": false
+  },
+  "stock_records": [
+    {
+      "path": "$.data.collection.collection.skus[0]",
+      "fields": {
+        "productId": "63757975",
+        "shortSku": "673024373",
+        "sizePrimary": "XXL_p",
+        "sizeSecondary": null,
+        "inventory": 0,
+        "inventoryStatus": "Unavailable"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[1]",
+      "fields": {
+        "productId": "63757975",
+        "shortSku": "673024365",
+        "sizePrimary": "M_p",
+        "sizeSecondary": null,
+        "inventory": 0,
+        "inventoryStatus": "Unavailable"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[2]",
+      "fields": {
+        "productId": "63757975",
+        "shortSku": "673024402",
+        "sizePrimary": "S_p",
+        "sizeSecondary": null,
+        "inventory": 66,
+        "inventoryStatus": "Available"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[3]",
+      "fields": {
+        "productId": "63757975",
+        "shortSku": "673024381",
+        "sizePrimary": "XS_p",
+        "sizeSecondary": null,
+        "inventory": 1,
+        "inventoryStatus": "Available"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[4]",
+      "fields": {
+        "productId": "63757975",
+        "shortSku": "673024390",
+        "sizePrimary": "L_p",
+        "sizeSecondary": null,
+        "inventory": 0,
+        "inventoryStatus": "Unavailable"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[5]",
+      "fields": {
+        "productId": "63757975",
+        "shortSku": "673024331",
+        "sizePrimary": "XL_p",
+        "sizeSecondary": null,
+        "inventory": 0,
+        "inventoryStatus": "Unavailable"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[6]",
+      "fields": {
+        "productId": "63757975",
+        "shortSku": "673024429",
+        "sizePrimary": "XXS_p",
+        "sizeSecondary": null,
+        "inventory": 0,
+        "inventoryStatus": "Unavailable"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[7]",
+      "fields": {
+        "productId": "63757974",
+        "shortSku": "673063057",
+        "sizePrimary": "L_p",
+        "sizeSecondary": null,
+        "inventory": 0,
+        "inventoryStatus": "Unavailable"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[8]",
+      "fields": {
+        "productId": "63757974",
+        "shortSku": "673063188",
+        "sizePrimary": "S_p",
+        "sizeSecondary": null,
+        "inventory": 1,
+        "inventoryStatus": "Available"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[9]",
+      "fields": {
+        "productId": "63757974",
+        "shortSku": "673063145",
+        "sizePrimary": "M_p",
+        "sizeSecondary": null,
+        "inventory": 0,
+        "inventoryStatus": "Unavailable"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[10]",
+      "fields": {
+        "productId": "63757974",
+        "shortSku": "673063081",
+        "sizePrimary": "XL_p",
+        "sizeSecondary": null,
+        "inventory": 0,
+        "inventoryStatus": "Unavailable"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[11]",
+      "fields": {
+        "productId": "63757974",
+        "shortSku": "673063170",
+        "sizePrimary": "XS_p",
+        "sizeSecondary": null,
+        "inventory": 0,
+        "inventoryStatus": "Unavailable"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[12]",
+      "fields": {
+        "productId": "63757974",
+        "shortSku": "673063065",
+        "sizePrimary": "XXL_p",
+        "sizeSecondary": null,
+        "inventory": 0,
+        "inventoryStatus": "Unavailable"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[13]",
+      "fields": {
+        "productId": "63757974",
+        "shortSku": "673063129",
+        "sizePrimary": "XXS_p",
+        "sizeSecondary": null,
+        "inventory": 0,
+        "inventoryStatus": "Unavailable"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[14]",
+      "fields": {
+        "productId": "63757969",
+        "shortSku": "673063153",
+        "sizePrimary": "XS_p",
+        "sizeSecondary": null,
+        "inventory": 0,
+        "inventoryStatus": "Unavailable"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[15]",
+      "fields": {
+        "productId": "63757969",
+        "shortSku": "673063073",
+        "sizePrimary": "M_p",
+        "sizeSecondary": null,
+        "inventory": 0,
+        "inventoryStatus": "Unavailable"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[16]",
+      "fields": {
+        "productId": "63757969",
+        "shortSku": "673063090",
+        "sizePrimary": "L_p",
+        "sizeSecondary": null,
+        "inventory": 0,
+        "inventoryStatus": "Unavailable"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[17]",
+      "fields": {
+        "productId": "63757969",
+        "shortSku": "673063161",
+        "sizePrimary": "S_p",
+        "sizeSecondary": null,
+        "inventory": 0,
+        "inventoryStatus": "Unavailable"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[18]",
+      "fields": {
+        "productId": "63757969",
+        "shortSku": "673063111",
+        "sizePrimary": "XXS_p",
+        "sizeSecondary": null,
+        "inventory": 0,
+        "inventoryStatus": "Unavailable"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[19]",
+      "fields": {
+        "productId": "63757969",
+        "shortSku": "673063137",
+        "sizePrimary": "XXL_p",
+        "sizeSecondary": null,
+        "inventory": 0,
+        "inventoryStatus": "Unavailable"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[20]",
+      "fields": {
+        "productId": "63757969",
+        "shortSku": "673063102",
+        "sizePrimary": "XL_p",
+        "sizeSecondary": null,
+        "inventory": 0,
+        "inventoryStatus": "Unavailable"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[21]",
+      "fields": {
+        "productId": "63757980",
+        "shortSku": "673024306",
+        "sizePrimary": "XXS_p",
+        "sizeSecondary": null,
+        "inventory": 0,
+        "inventoryStatus": "Unavailable"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[22]",
+      "fields": {
+        "productId": "63757980",
+        "shortSku": "673024349",
+        "sizePrimary": "S_p",
+        "sizeSecondary": null,
+        "inventory": 0,
+        "inventoryStatus": "Unavailable"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[23]",
+      "fields": {
+        "productId": "63757980",
+        "shortSku": "673024357",
+        "sizePrimary": "XL_p",
+        "sizeSecondary": null,
+        "inventory": 0,
+        "inventoryStatus": "Unavailable"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[24]",
+      "fields": {
+        "productId": "63757980",
+        "shortSku": "673024411",
+        "sizePrimary": "XXL_p",
+        "sizeSecondary": null,
+        "inventory": 0,
+        "inventoryStatus": "Unavailable"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[25]",
+      "fields": {
+        "productId": "63757980",
+        "shortSku": "673024314",
+        "sizePrimary": "XS_p",
+        "sizeSecondary": null,
+        "inventory": 0,
+        "inventoryStatus": "Unavailable"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[26]",
+      "fields": {
+        "productId": "63757980",
+        "shortSku": "673024322",
+        "sizePrimary": "L_p",
+        "sizeSecondary": null,
+        "inventory": 1,
+        "inventoryStatus": "Available"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[27]",
+      "fields": {
+        "productId": "63757980",
+        "shortSku": "673024293",
+        "sizePrimary": "M_p",
+        "sizeSecondary": null,
+        "inventory": 2,
+        "inventoryStatus": "Available"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[28]",
+      "fields": {
+        "productId": "63757979",
+        "shortSku": "673074856",
+        "sizePrimary": "XL_p",
+        "sizeSecondary": null,
+        "inventory": 0,
+        "inventoryStatus": "Unavailable"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[29]",
+      "fields": {
+        "productId": "63757979",
+        "shortSku": "673074987",
+        "sizePrimary": "XXS_p",
+        "sizeSecondary": null,
+        "inventory": 10,
+        "inventoryStatus": "Available"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[30]",
+      "fields": {
+        "productId": "63757979",
+        "shortSku": "673074792",
+        "sizePrimary": "S_p",
+        "sizeSecondary": null,
+        "inventory": 125,
+        "inventoryStatus": "Available"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[31]",
+      "fields": {
+        "productId": "63757979",
+        "shortSku": "673074848",
+        "sizePrimary": "XS_p",
+        "sizeSecondary": null,
+        "inventory": 99,
+        "inventoryStatus": "Available"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[32]",
+      "fields": {
+        "productId": "63757979",
+        "shortSku": "673074872",
+        "sizePrimary": "M_p",
+        "sizeSecondary": null,
+        "inventory": 2,
+        "inventoryStatus": "Available"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[33]",
+      "fields": {
+        "productId": "63757979",
+        "shortSku": "673074784",
+        "sizePrimary": "XXL_p",
+        "sizeSecondary": null,
+        "inventory": 6,
+        "inventoryStatus": "Available"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[34]",
+      "fields": {
+        "productId": "63757979",
+        "shortSku": "673074944",
+        "sizePrimary": "L_p",
+        "sizeSecondary": null,
+        "inventory": 43,
+        "inventoryStatus": "Available"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[35]",
+      "fields": {
+        "productId": "63757982",
+        "shortSku": "673074821",
+        "sizePrimary": "XXL_p",
+        "sizeSecondary": null,
+        "inventory": 5,
+        "inventoryStatus": "Available"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[36]",
+      "fields": {
+        "productId": "63757982",
+        "shortSku": "673074961",
+        "sizePrimary": "L_p",
+        "sizeSecondary": null,
+        "inventory": 1,
+        "inventoryStatus": "Available"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[37]",
+      "fields": {
+        "productId": "63757982",
+        "shortSku": "673074901",
+        "sizePrimary": "M_p",
+        "sizeSecondary": null,
+        "inventory": 10,
+        "inventoryStatus": "Available"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[38]",
+      "fields": {
+        "productId": "63757982",
+        "shortSku": "673074979",
+        "sizePrimary": "XL_p",
+        "sizeSecondary": null,
+        "inventory": 0,
+        "inventoryStatus": "Unavailable"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[39]",
+      "fields": {
+        "productId": "63757982",
+        "shortSku": "673074899",
+        "sizePrimary": "XXS_p",
+        "sizeSecondary": null,
+        "inventory": 0,
+        "inventoryStatus": "Unavailable"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[40]",
+      "fields": {
+        "productId": "63757982",
+        "shortSku": "673074830",
+        "sizePrimary": "S_p",
+        "sizeSecondary": null,
+        "inventory": 28,
+        "inventoryStatus": "Available"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[41]",
+      "fields": {
+        "productId": "63757982",
+        "shortSku": "673074936",
+        "sizePrimary": "XS_p",
+        "sizeSecondary": null,
+        "inventory": 50,
+        "inventoryStatus": "Available"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[42]",
+      "fields": {
+        "productId": "63757963",
+        "shortSku": "669420293",
+        "sizePrimary": "M_p",
+        "sizeSecondary": null,
+        "inventory": 170,
+        "inventoryStatus": "Available"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[43]",
+      "fields": {
+        "productId": "63757963",
+        "shortSku": "670805959",
+        "sizePrimary": "XS_p",
+        "sizeSecondary": null,
+        "inventory": 263,
+        "inventoryStatus": "Available"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[44]",
+      "fields": {
+        "productId": "63757963",
+        "shortSku": "669420306",
+        "sizePrimary": "S_p",
+        "sizeSecondary": null,
+        "inventory": 384,
+        "inventoryStatus": "Available"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[45]",
+      "fields": {
+        "productId": "63757963",
+        "shortSku": "669850023",
+        "sizePrimary": "XXS_p",
+        "sizeSecondary": null,
+        "inventory": 0,
+        "inventoryStatus": "Unavailable"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[46]",
+      "fields": {
+        "productId": "63757963",
+        "shortSku": "671574662",
+        "sizePrimary": "XXL_p",
+        "sizeSecondary": null,
+        "inventory": 39,
+        "inventoryStatus": "Available"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[47]",
+      "fields": {
+        "productId": "63757963",
+        "shortSku": "670644171",
+        "sizePrimary": "L_p",
+        "sizeSecondary": null,
+        "inventory": 149,
+        "inventoryStatus": "Available"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[48]",
+      "fields": {
+        "productId": "63757963",
+        "shortSku": "671338281",
+        "sizePrimary": "XL_p",
+        "sizeSecondary": null,
+        "inventory": 68,
+        "inventoryStatus": "Available"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[49]",
+      "fields": {
+        "productId": "63757966",
+        "shortSku": "669056410",
+        "sizePrimary": "L_p",
+        "sizeSecondary": null,
+        "inventory": 84,
+        "inventoryStatus": "Available"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[50]",
+      "fields": {
+        "productId": "63757966",
+        "shortSku": "669484385",
+        "sizePrimary": "XXL_p",
+        "sizeSecondary": null,
+        "inventory": 70,
+        "inventoryStatus": "Available"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[51]",
+      "fields": {
+        "productId": "63757966",
+        "shortSku": "670796204",
+        "sizePrimary": "S_p",
+        "sizeSecondary": null,
+        "inventory": 283,
+        "inventoryStatus": "Available"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[52]",
+      "fields": {
+        "productId": "63757966",
+        "shortSku": "669644959",
+        "sizePrimary": "XL_p",
+        "sizeSecondary": null,
+        "inventory": 73,
+        "inventoryStatus": "Available"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[53]",
+      "fields": {
+        "productId": "63757966",
+        "shortSku": "671579308",
+        "sizePrimary": "M_p",
+        "sizeSecondary": null,
+        "inventory": 153,
+        "inventoryStatus": "Available"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[54]",
+      "fields": {
+        "productId": "63757966",
+        "shortSku": "672122271",
+        "sizePrimary": "XXS_p",
+        "sizeSecondary": null,
+        "inventory": 0,
+        "inventoryStatus": "Unavailable"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[55]",
+      "fields": {
+        "productId": "63757966",
+        "shortSku": "670825386",
+        "sizePrimary": "XS_p",
+        "sizeSecondary": null,
+        "inventory": 212,
+        "inventoryStatus": "Available"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[56]",
+      "fields": {
+        "productId": "63766569",
+        "shortSku": "673080308",
+        "sizePrimary": "XS_p",
+        "sizeSecondary": null,
+        "inventory": 0,
+        "inventoryStatus": "Unavailable"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[57]",
+      "fields": {
+        "productId": "63766569",
+        "shortSku": "673080412",
+        "sizePrimary": "XXS_p",
+        "sizeSecondary": null,
+        "inventory": 0,
+        "inventoryStatus": "Unavailable"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[58]",
+      "fields": {
+        "productId": "63766569",
+        "shortSku": "673080404",
+        "sizePrimary": "M_p",
+        "sizeSecondary": null,
+        "inventory": 0,
+        "inventoryStatus": "Unavailable"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[59]",
+      "fields": {
+        "productId": "63766569",
+        "shortSku": "673080471",
+        "sizePrimary": "XL_p",
+        "sizeSecondary": null,
+        "inventory": 2,
+        "inventoryStatus": "Available"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[60]",
+      "fields": {
+        "productId": "63766569",
+        "shortSku": "673080391",
+        "sizePrimary": "S_p",
+        "sizeSecondary": null,
+        "inventory": 2,
+        "inventoryStatus": "Available"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[61]",
+      "fields": {
+        "productId": "63766569",
+        "shortSku": "673080439",
+        "sizePrimary": "XXL_p",
+        "sizeSecondary": null,
+        "inventory": 0,
+        "inventoryStatus": "Unavailable"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[62]",
+      "fields": {
+        "productId": "63766569",
+        "shortSku": "673080375",
+        "sizePrimary": "L_p",
+        "sizeSecondary": null,
+        "inventory": 0,
+        "inventoryStatus": "Unavailable"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[63]",
+      "fields": {
+        "productId": "63766393",
+        "shortSku": "673107742",
+        "sizePrimary": "XS_p",
+        "sizeSecondary": null,
+        "inventory": 0,
+        "inventoryStatus": "Unavailable"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[64]",
+      "fields": {
+        "productId": "63766393",
+        "shortSku": "673107873",
+        "sizePrimary": "XXL_p",
+        "sizeSecondary": null,
+        "inventory": 10,
+        "inventoryStatus": "Available"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[65]",
+      "fields": {
+        "productId": "63766393",
+        "shortSku": "673107793",
+        "sizePrimary": "XXS_p",
+        "sizeSecondary": null,
+        "inventory": 0,
+        "inventoryStatus": "Unavailable"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[66]",
+      "fields": {
+        "productId": "63766393",
+        "shortSku": "673107751",
+        "sizePrimary": "XL_p",
+        "sizeSecondary": null,
+        "inventory": 0,
+        "inventoryStatus": "Unavailable"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[67]",
+      "fields": {
+        "productId": "63766393",
+        "shortSku": "673107911",
+        "sizePrimary": "S_p",
+        "sizeSecondary": null,
+        "inventory": 0,
+        "inventoryStatus": "Unavailable"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[68]",
+      "fields": {
+        "productId": "63766393",
+        "shortSku": "673107831",
+        "sizePrimary": "M_p",
+        "sizeSecondary": null,
+        "inventory": 0,
+        "inventoryStatus": "Unavailable"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[69]",
+      "fields": {
+        "productId": "63766393",
+        "shortSku": "673107777",
+        "sizePrimary": "L_p",
+        "sizeSecondary": null,
+        "inventory": 0,
+        "inventoryStatus": "Unavailable"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[70]",
+      "fields": {
+        "productId": "63766380",
+        "shortSku": "673107902",
+        "sizePrimary": "XXS_p",
+        "sizeSecondary": null,
+        "inventory": 2,
+        "inventoryStatus": "Available"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[71]",
+      "fields": {
+        "productId": "63766380",
+        "shortSku": "673107890",
+        "sizePrimary": "M_p",
+        "sizeSecondary": null,
+        "inventory": 0,
+        "inventoryStatus": "Unavailable"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[72]",
+      "fields": {
+        "productId": "63766380",
+        "shortSku": "673107822",
+        "sizePrimary": "S_p",
+        "sizeSecondary": null,
+        "inventory": 1,
+        "inventoryStatus": "Available"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[73]",
+      "fields": {
+        "productId": "63766380",
+        "shortSku": "673107937",
+        "sizePrimary": "XXL_p",
+        "sizeSecondary": null,
+        "inventory": 24,
+        "inventoryStatus": "Available"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[74]",
+      "fields": {
+        "productId": "63766380",
+        "shortSku": "673107857",
+        "sizePrimary": "XS_p",
+        "sizeSecondary": null,
+        "inventory": 0,
+        "inventoryStatus": "Unavailable"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[75]",
+      "fields": {
+        "productId": "63766380",
+        "shortSku": "673107929",
+        "sizePrimary": "XL_p",
+        "sizeSecondary": null,
+        "inventory": 0,
+        "inventoryStatus": "Unavailable"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[76]",
+      "fields": {
+        "productId": "63766380",
+        "shortSku": "673107865",
+        "sizePrimary": "L_p",
+        "sizeSecondary": null,
+        "inventory": 0,
+        "inventoryStatus": "Unavailable"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[77]",
+      "fields": {
+        "productId": "63757989",
+        "shortSku": "673074864",
+        "sizePrimary": "XS_p",
+        "sizeSecondary": null,
+        "inventory": 103,
+        "inventoryStatus": "Available"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[78]",
+      "fields": {
+        "productId": "63757989",
+        "shortSku": "673074928",
+        "sizePrimary": "XXL_p",
+        "sizeSecondary": null,
+        "inventory": 18,
+        "inventoryStatus": "Available"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[79]",
+      "fields": {
+        "productId": "63757989",
+        "shortSku": "673074910",
+        "sizePrimary": "M_p",
+        "sizeSecondary": null,
+        "inventory": 10,
+        "inventoryStatus": "Available"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[80]",
+      "fields": {
+        "productId": "63757989",
+        "shortSku": "673074813",
+        "sizePrimary": "XXS_p",
+        "sizeSecondary": null,
+        "inventory": 1,
+        "inventoryStatus": "Available"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[81]",
+      "fields": {
+        "productId": "63757989",
+        "shortSku": "673074952",
+        "sizePrimary": "XL_p",
+        "sizeSecondary": null,
+        "inventory": 11,
+        "inventoryStatus": "Available"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[82]",
+      "fields": {
+        "productId": "63757989",
+        "shortSku": "673074805",
+        "sizePrimary": "S_p",
+        "sizeSecondary": null,
+        "inventory": 160,
+        "inventoryStatus": "Available"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[83]",
+      "fields": {
+        "productId": "63757989",
+        "shortSku": "673074881",
+        "sizePrimary": "L_p",
+        "sizeSecondary": null,
+        "inventory": 39,
+        "inventoryStatus": "Available"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[84]",
+      "fields": {
+        "productId": "63947819",
+        "shortSku": "673025317",
+        "sizePrimary": "L_p",
+        "sizeSecondary": null,
+        "inventory": 71,
+        "inventoryStatus": "Available"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[85]",
+      "fields": {
+        "productId": "63947819",
+        "shortSku": "673025093",
+        "sizePrimary": "XS_p",
+        "sizeSecondary": null,
+        "inventory": 178,
+        "inventoryStatus": "Available"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[86]",
+      "fields": {
+        "productId": "63947819",
+        "shortSku": "673025114",
+        "sizePrimary": "XXS_p",
+        "sizeSecondary": null,
+        "inventory": 50,
+        "inventoryStatus": "Available"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[87]",
+      "fields": {
+        "productId": "63947819",
+        "shortSku": "673025325",
+        "sizePrimary": "M_p",
+        "sizeSecondary": null,
+        "inventory": 160,
+        "inventoryStatus": "Available"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[88]",
+      "fields": {
+        "productId": "63947819",
+        "shortSku": "673025131",
+        "sizePrimary": "S_p",
+        "sizeSecondary": null,
+        "inventory": 205,
+        "inventoryStatus": "Available"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[89]",
+      "fields": {
+        "productId": "63947819",
+        "shortSku": "673025245",
+        "sizePrimary": "XL_p",
+        "sizeSecondary": null,
+        "inventory": 0,
+        "inventoryStatus": "Unavailable"
+      }
+    },
+    {
+      "path": "$.data.collection.collection.skus[90]",
+      "fields": {
+        "productId": "63947819",
+        "shortSku": "673025270",
+        "sizePrimary": "XXL_p",
+        "sizeSecondary": null,
+        "inventory": 17,
+        "inventoryStatus": "Available"
+      }
+    }
+  ]
+}

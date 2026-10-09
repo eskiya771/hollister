@@ -1,0 +1,64 @@
+{
+  "page_product_id": "63270319",
+  "color": "Weiß",
+  "color_product_id": "63617331",
+  "sizes": {
+    "XS": {
+      "status": "ausverkauft",
+      "shortSku": "671819156",
+      "inventory": 0,
+      "inventoryStatus": "Unavailable",
+      "ui_status": "ausverkauft",
+      "source": "initial HTML: CACHE.ROOT_QUERY.*.collection.skus"
+    },
+    "S": {
+      "status": "ausverkauft",
+      "shortSku": "671635648",
+      "inventory": 0,
+      "inventoryStatus": "Unavailable",
+      "ui_status": "ausverkauft",
+      "source": "initial HTML: CACHE.ROOT_QUERY.*.collection.skus"
+    },
+    "XXL": {
+      "status": "verfügbar",
+      "shortSku": "670148021",
+      "inventory": 42,
+      "inventoryStatus": "Available",
+      "ui_status": "verfügbar",
+      "source": "initial HTML: CACHE.ROOT_QUERY.*.collection.skus"
+    }
+  },
+  "request_count": 35,
+  "response_count": 35,
+  "size_change_requests": [],
+  "http_tests": [
+    {
+      "url": "https://www.hollisterco.com/shop/eu-de/p/camisole-mit-spitzenbesatz-fr-lagenlooks-63270319",
+      "method": "GET",
+      "credentials": "none",
+      "result": {
+        "status": 200,
+        "final_url": "https://www.hollisterco.com/shop/eu/p/camisole-mit-spitzenbesatz-fr-lagenlooks-63270319",
+        "bytes": 3038,
+        "truncated": false,
+        "embedded": {
+          "script_count": 1,
+          "json": [],
+          "product_controls": [],
+          "coverage": "JSON and JSON assignments; executable JS/JSON.parse strings not decoded"
+        },
+        "challenge_detected": true
+      }
+    },
+    {
+      "url": "https://www.hollisterco.com/api/bff/product?storeId=19158&catalogId=11558&langId=-3&brand=hol&store=h-eu-de&country=DE&urlRoot=%2Fshop%2Feu-de&currency=EUR&operationName=SavesListQuery&variables=%7B%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22d17cfc521b286b755c653a04634e3fe28c79e020c364dfb7365f7a5c909b0c09%22%7D%7D",
+      "method": "GET",
+      "credentials": "none",
+      "result": {
+        "error_type": "HTTPError",
+        "status": 400
+      }
+    }
+  ],
+  "capture_errors": []
+}
