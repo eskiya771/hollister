@@ -1,0 +1,28 @@
+services:
+  manual:
+    build:
+      context: .
+      dockerfile: Dockerfile.manual
+    restart: 'no'
+    init: true
+    stop_grace_period: 45s
+    ports:
+      - '127.0.0.1:6080:6080'
+    volumes:
+      - browser-data:/data
+    tmpfs:
+      - /tmp:size=512m,mode=1777
+    shm_size: 512m
+    read_only: true
+    cap_drop: [ALL]
+    security_opt:
+      - no-new-privileges:true
+    logging:
+      driver: json-file
+      options:
+        max-size: 5m
+        max-file: '2'
+volumes:
+  browser-data:
+    external: true
+    name: hollister_browser-data

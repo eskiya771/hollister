@@ -3,12 +3,17 @@ services:
     build: .
     restart: unless-stopped
     env_file: .env
+    environment:
+      BROWSER_PROFILE_DIR: /data/browser-profile
+      CHECK_MODE: browser
+      CHECK_INTERVAL_SECONDS: '60'
     init: true
+    stop_grace_period: 90s
     volumes:
       - browser-data:/data
     tmpfs:
-      - /tmp:size=512m
-    shm_size: 256m
+      - /tmp:size=512m,mode=1777
+    shm_size: 512m
     read_only: true
     cap_drop: [ALL]
     security_opt:
@@ -18,12 +23,14 @@ services:
       options:
         max-size: 5m
         max-file: '2'
-  manual-browser:
+  manual-browser: &manual_browser
     profiles: [manual]
     build:
       context: .
       target: manual
     env_file: .env
+    environment:
+      BROWSER_PROFILE_DIR: /data/browser-profile
     init: true
     restart: 'no'
     stop_grace_period: 30s
@@ -32,8 +39,8 @@ services:
     volumes:
       - browser-data:/data
     tmpfs:
-      - /tmp:size=512m
-    shm_size: 256m
+      - /tmp:size=512m,mode=1777
+    shm_size: 512m
     read_only: true
     cap_drop: [ALL]
     security_opt:
@@ -43,5 +50,18 @@ services:
       options:
         max-size: 5m
         max-file: '2'
+  session-monitor:
+    <<: *manual_browser
+    profiles: [session]
+    restart: unless-stopped
+    stop_grace_period: 90s
+    environment:
+      BROWSER_PROFILE_DIR: /data/browser-profile
+      SESSION_MONITOR: '1'
+      CHECK_INTERVAL_SECONDS: '60'
+      PRODUCT_SIZES: 'XS,S'
+      VERIFY_S_ONCE: '${VERIFY_S_ONCE:-0}'
 volumes:
   browser-data:
+    external: true
+    name: hollister_browser-data

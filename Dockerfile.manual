@@ -1,0 +1,10 @@
+FROM hollister-hollister:latest
+USER root
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    xvfb x11vnc novnc websockify openbox \
+    && rm -rf /var/lib/apt/lists/*
+COPY live_browser.py /app/live_browser.py
+COPY app.py browser_check.py live_monitor.py stock_diagnostics.py /app/
+ENV DISPLAY=:99
+USER monitor
+CMD ["python", "live_browser.py"]

@@ -7,3 +7,9 @@ __pycache__
 test_app.py
 vendor
 browser-profile
+.venv
+artifacts
+data
+.env.*
+docs
+.update-backups

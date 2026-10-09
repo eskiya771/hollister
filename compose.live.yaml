@@ -1,0 +1,33 @@
+services:
+  live:
+    build:
+      context: .
+      dockerfile: Dockerfile.live
+    restart: unless-stopped
+    init: true
+    stop_grace_period: 90s
+    env_file: .env
+    environment:
+      LIVE_MONITOR: '1'
+      CHECK_INTERVAL_SECONDS: '60'
+      BROWSER_PROFILE_DIR: /data/browser-profile
+    ports:
+      - '127.0.0.1:6080:6080'
+    volumes:
+      - browser-data:/data
+    tmpfs:
+      - /tmp:size=512m,mode=1777
+    shm_size: 512m
+    read_only: true
+    cap_drop: [ALL]
+    security_opt:
+      - no-new-privileges:true
+    logging:
+      driver: json-file
+      options:
+        max-size: 5m
+        max-file: '2'
+volumes:
+  browser-data:
+    external: true
+    name: hollister_browser-data

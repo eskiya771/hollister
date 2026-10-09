@@ -12,6 +12,7 @@ import urllib.request
 from datetime import datetime
 from html import unescape
 from zoneinfo import ZoneInfo
+from urllib.parse import urlsplit
 
 STOP = threading.Event()
 LOG = logging.getLogger('hollister')
@@ -19,14 +20,14 @@ LOG = logging.getLogger('hollister')
 
 def load_env(path='.env'):
     if Path(path).is_file():
-        for line in Path(path).read_text().splitlines():
+        for line in Path(path).read_text(encoding='utf-8-sig').splitlines():
             if line.strip() and not line.lstrip().startswith('#') and '=' in line:
                 key, value = line.split('=', 1)
                 os.environ.setdefault(key.strip(), value.strip().strip('"').strip("'"))
 
 
-def stock_from_html(html, size, color):
-    if 'Client Challenge' in html or '/_fs-ch-' in html:
+def stock_from_html(html, size, color, sku):
+    if re.search(r'<title\b[^>]*>\s*(?:Client Challenge|Access Denied)\s*</title>', html, re.I):
         return 'unknown', 'Hollister liefert eine Schutzseite statt Produktdaten.'
     scripts = re.findall(r'<script\b[^>]*type=[\"\']application/ld\+json[\"\'][^>]*>(.*?)</script\s*>', html, re.I | re.S)
     variants = []
@@ -39,7 +40,7 @@ def stock_from_html(html, size, color):
             typ = obj.get('@type', [])
             if isinstance(typ, str):
                 typ = [typ]
-            if 'Product' in typ and str(obj.get('size', '')).casefold() == size.casefold() and str(obj.get('color', '')).casefold() == color.casefold():
+            if 'Product' in typ and str(obj.get('sku', '')) == sku and str(obj.get('size', '')).casefold() == size.casefold() and str(obj.get('color', '')).casefold() == color.casefold():
                 offers = obj.get('offers', [])
                 if isinstance(offers, dict):
                     offers = [offers]
@@ -71,16 +72,31 @@ def check(cfg):
             return check_browser(cfg)
         except Exception as exc:
             return 'unknown', 'Browser nicht einsatzbereit (' + type(exc).__name__ + ').'
+    return 'unknown', 'Nur CHECK_MODE=browser unterstützt die geprüfte Variantenauswahl.'
+
+
+def validate_config(cfg):
+    required = ['PRODUCT_URL', 'PRODUCT_SIZE', 'PRODUCT_COLOR', 'TELEGRAM_BOT_TOKEN', 'TELEGRAM_CHAT_ID']
+    missing = [key for key in required if not cfg.get(key)]
+    if missing:
+        raise ValueError('Fehlende Einstellungen: ' + ', '.join(missing))
+    cfg.setdefault('PRODUCT_SKU', '673107873')
+    url = urlsplit(cfg['PRODUCT_URL'])
+    if (url.scheme != 'https' or url.netloc != 'www.hollisterco.com'
+            or url.path != '/shop/eu-de/p/henley-mit-leopardenprint-und-logo-63757420'):
+        raise ValueError('PRODUCT_URL muss die konfigurierte deutsche Produktseite sein.')
+    if (cfg['PRODUCT_SKU'], cfg['PRODUCT_SIZE'], cfg['PRODUCT_COLOR']) != ('673107873', 'XS', 'Helles Pink'):
+        raise ValueError('Zielvariante muss SKU 673107873, XS, Helles Pink sein.')
+    if cfg.get('CHECK_MODE', 'browser') != 'browser':
+        raise ValueError('CHECK_MODE muss browser sein.')
     try:
-        req = urllib.request.Request(cfg['PRODUCT_URL'], headers={'User-Agent': 'HollisterAvailabilityMonitor/0.1', 'Accept-Language': 'de-DE,de;q=0.9'})
-        with urllib.request.urlopen(req, timeout=30) as response:
-            html = response.read(5_000_001)
-            if len(html) > 5_000_000:
-                return 'unknown', 'Shopantwort zu groß.'
-            return stock_from_html(html.decode('utf-8', errors='replace'), cfg['PRODUCT_SIZE'], cfg['PRODUCT_COLOR'])
-    except Exception as exc:
-        # Never log URLs/exceptions containing credentials.
-        return 'unknown', 'Shopabfrage fehlgeschlagen (' + type(exc).__name__ + ').'
+        interval = int(cfg.get('CHECK_INTERVAL_SECONDS', '60'))
+        ZoneInfo(cfg.get('TZ', 'Europe/Berlin'))
+    except Exception:
+        raise ValueError('Intervall oder Zeitzone ungültig.') from None
+    if interval < 60:
+        raise ValueError('CHECK_INTERVAL_SECONDS muss für diesen Monitor 900 sein.')
+    return interval
 
 
 def notify(cfg, text):
@@ -94,9 +110,15 @@ def notify(cfg, text):
 
 def run_once(cfg):
     status, reason = check(cfg)
+    return send_status(cfg, status, reason)
+
+
+def send_status(cfg, status, reason):
     timestamp = datetime.now(ZoneInfo(cfg.get('TZ', 'Europe/Berlin'))).strftime('%d.%m.%Y %H:%M')
     label = {'available': '✅ Verfügbar', 'unavailable': '❌ Nicht verfügbar', 'unknown': '⚠️ Status nicht prüfbar'}[status]
-    message = f'Hollister · {timestamp}\nIcon Henley · {cfg["PRODUCT_SIZE"]} · {cfg["PRODUCT_COLOR"]}\n{label}\n{reason}\n{cfg["PRODUCT_URL"]}'
+    LOG.info('stock_check status=%s reason=%s', status, reason)
+    sku_label = f' · Referenz-SKU {cfg["PRODUCT_SKU"]}' if cfg.get('PRODUCT_SKU') else ''
+    message = f'Hollister · {timestamp}\n{cfg.get('PRODUCT_NAME', 'Icon Henley')}{sku_label} · {cfg["PRODUCT_SIZE"]} · {cfg["PRODUCT_COLOR"]}\n{label}\n{reason}\n{cfg["PRODUCT_URL"]}'
     try:
         mid = notify(cfg, message)
         LOG.info('status=%s telegram_message_id=%s', status, mid)
@@ -109,29 +131,35 @@ def run_once(cfg):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--once', action='store_true')
-    parser.add_argument('--delay-first', action='store_true')
+    parser.add_argument('--test-telegram', action='store_true')
+    parser.add_argument('--check-only', action='store_true')
     args = parser.parse_args()
     logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s %(message)s')
     load_env()
-    required = ['PRODUCT_URL', 'PRODUCT_SIZE', 'PRODUCT_COLOR', 'TELEGRAM_BOT_TOKEN', 'TELEGRAM_CHAT_ID']
     cfg = dict(os.environ)
-    missing = [k for k in required if not cfg.get(k)]
-    if missing:
-        parser.error('Missing settings: ' + ', '.join(missing))
-    if not cfg['PRODUCT_URL'].startswith('https://www.hollisterco.com/shop/'):
-        parser.error('PRODUCT_URL must be a Hollister shop HTTPS URL')
-    interval = int(cfg.get('CHECK_INTERVAL_SECONDS', '900'))
-    if interval < 60:
-        parser.error('CHECK_INTERVAL_SECONDS must be at least 60')
+    try:
+        interval = validate_config(cfg)
+    except ValueError as exc:
+        parser.error(str(exc))
+    if args.test_telegram:
+        try:
+            LOG.info('telegram_test message_id=%s', notify(cfg, 'Hollister: Telegram-Verbindungstest. Dies ist keine Bestandsmeldung.'))
+            return 0
+        except Exception as exc:
+            LOG.error('Telegram-Test fehlgeschlagen: %s', type(exc).__name__)
+            return 1
+    if args.check_only:
+        status, reason = check(cfg)
+        LOG.info('stock_check status=%s reason=%s', status, reason)
+        return 2 if status == 'unknown' else 0
     for sig in (signal.SIGTERM, signal.SIGINT):
         signal.signal(sig, lambda *_: STOP.set())
-    if args.delay_first:
-        STOP.wait(interval)
+    LOG.info('Monitor gestartet; erste Abfrage sofort, Intervall=%ss', interval)
     while not STOP.is_set():
         started = time.monotonic()
         result = run_once(cfg)
         if args.once:
-            return 1 if result == 'delivery_failed' else 0
+            return 1 if result == 'delivery_failed' else (2 if result == 'unknown' else 0)
         STOP.wait(max(0, interval - (time.monotonic() - started)))
     return 0
 

@@ -1,0 +1,4 @@
+# Reuse the already installed graphical browser and Linux dependencies.
+FROM hollister-manual-manual:latest
+COPY app.py browser_check.py live_browser.py live_monitor.py stock_diagnostics.py /app/
+CMD ["python", "live_browser.py"]

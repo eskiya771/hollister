@@ -3,3 +3,9 @@
 !.env.example
 data/
 __pycache__/
+*.env
+browser-profile/
+.venv/
+artifacts/
+*.log
+.update-backups/
